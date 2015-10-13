@@ -1,0 +1,11 @@
+# source icon
+*.svg
+
+#already bundled addons
+*.xpi
+
+screenshot.png
+screenshot.jpg
+
+*.jpmignore
+*.gitignore

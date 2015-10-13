@@ -1,0 +1,136 @@
+﻿<html>
+<head>
+<style>
+
+div.container{
+    text-align: center;
+    -moz-user-select: none;
+    cursor: default;
+}
+
+#error-message {
+    color: #FF3333;
+}
+
+button{
+    background-color: #66DDAA;
+    border: none;
+    font-family: Segoe UI;
+    padding: 0px;
+    vertical-align:middle;
+}
+
+.time-button{
+    width: 40px;
+}
+
+button:hover{
+    background-color: #55CC99;
+}
+
+button:active{
+    background-color: #22AA66;
+
+}
+
+button:disabled{
+    background-color: #AAAAAA;
+}
+
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+input[type=range]{
+    width: 50px;
+    vertical-align:middle;
+    margin: auto;
+}
+
+input[type=range]::-moz-range-track {
+    width: 50px;
+    height: 5px;
+    background: #F12B24;
+    border: none;
+    border-radius: 0px;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 6px;
+    border-radius: 0%;
+    background: gray;
+}
+
+#mute{
+    width: 24px;
+    vertical-align:middle;
+}
+
+#rate-viewer{
+    width: 40px;
+    border: 2px solid;
+    user-select: none;
+    -moz-user-select: none;
+    cursor: default;
+    vertical-align:middle;
+    display:inline-block;
+}
+
+.tab-title-viewer{
+    font-family: Segoe UI;
+}
+
+.inner-container{
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 5px 5px 8px 5px;
+}
+
+.outer-container{
+    border: 1px red;
+    padding: 10px 0 10px 0;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <button id="attach-button" onclick="attachToTab()">Attach to Current Tab</button>
+        <div class="outer-container">
+            <span class="inner-container">
+                <button  class="control" disabled onclick="playPause()" title="play/pause">&#9654;/&#10074;&#10074;</button>
+                <img id="mute" src="speaker_none.png" onclick="toggleMute()" />
+                <input id="volume" type="range"/>
+                <button class="control" disabled onclick="prev()" title="previous video">&#10074;&#x25c0;&#x25c0;&nbsp;</button>
+                <button class="control" disabled onclick="next()" title="next video">&#9654;&#9654;&#10074;&nbsp</button>
+            </span>
+        </div>
+
+        <div class="outer-container">
+            <span class="inner-container">
+                <button class="control time-button" disabled onclick="jump(-300)">-5m</button>
+                <button class="control time-button" disabled onclick="jump(-60)">-1m</button>
+                <button class="control time-button" disabled onclick="jump(-30)">-30s</button>
+                <button class="control time-button" disabled onclick="jump(-10)">-10s</button>
+                <button class="control time-button" disabled onclick="jump(10)">+10s</button>
+                <button class="control time-button" disabled onclick="jump(30)">+30s</button>
+                <button class="control time-button" disabled onclick="jump(60)">+1m</button>
+                <button class="control time-button" disabled onclick="jump(300)">+5m</button>
+            </span>
+        </div>
+
+        <div class="outer-container">
+            <span class="inner-container">
+                <button class="control" disabled onclick="slower()" title="decrease playback rate">&#x25c0;&#x25c0;&#x25c0;</button>
+                <span id="rate-viewer" title="playback rate">1</span>
+                <button class="control" disabled onclick="faster()" title="increase playback rate">&#9654;&#9654;&#9654;</button>
+            </span>
+        </div>
+        <div class="tab-title-viewer">Currently attached Tab:<br><span id="current-attached">-</span></div><br>
+        <div id="error-message">asdf</div>
+    </div>
+<script src="panelScript.js"></script>
+</body>
+</html>

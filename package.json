@@ -1,0 +1,17 @@
+{
+  "title": "Youtube Remote Control",
+  "name": "youtube-remote-control",
+  "version": "0.0.1",
+  "description": "Control a youtube player without having the tab active.",
+  "main": "index.js",
+  "author": "Alex",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "icon":"resource://youtube-remote-control/data/icon-128.png",
+  "permissions": {
+      "multiprocess" : true
+  }
+}
