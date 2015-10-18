@@ -5,6 +5,7 @@ var volumeSlider = document.getElementById("volume");
 var currentAttached = document.getElementById("current-attached");
 var muteButton = document.getElementById("mute");
 var rateViewer = document.getElementById("rate-viewer");
+var loopCheckbox = document.getElementById("loop");
 var isAttached = false;
 
 //changes from the player will only be saved to this background variable
@@ -87,6 +88,9 @@ volumeSlider.addEventListener("input", function (e) {
     if (isAttached) addon.port.emit("set-player-volume", e.target.value);
 });
 
+loopCheckbox.addEventListener("change", (e) => 
+        isAttached && addon.port.emit("loop-video", e.target.checked));
+
 //installs listeners for all used events
 addon.port.on("activate-button", changeButtonState);    
 addon.port.on("activate-controls", changeControlsState);
@@ -97,6 +101,7 @@ addon.port.on("tab-attached", function() {
     changeControlsState(true);
     attachButton.textContent = "Detach current tab";
     isAttached = true;
+    loopCheckbox.checked = false;
 });
 addon.port.on("tab-detached", function() {
         changeControlsState(false);

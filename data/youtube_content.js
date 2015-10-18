@@ -67,6 +67,7 @@ var playerObject = window.content.document.getElementById("movie_player");
         videotag.removeEventListener("loadedmetadata", videoLoaded);
         videotag.removeEventListener("volumechange", volumeChanged);
         videotag.removeEventListener("ratechange", rateChanged);
+        videotag.removeEventListener("ended", player.playVideo);
     });
     
     self.port.on("set-player-volume", function(volume){
@@ -81,6 +82,14 @@ var playerObject = window.content.document.getElementById("movie_player");
         }
     });
     
+    self.port.on("loop-video", function(checked){
+        if (checked){
+            videotag.addEventListener("ended", player.playVideo);
+        }else{
+            videotag.removeEventListener("ended", player.playVideo);
+        }
+    });
+
     //functions for the event listeners
     function videoLoaded(event){
         //console.info("loadedmetadata adstate: " + player.getAdState());

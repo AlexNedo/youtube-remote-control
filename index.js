@@ -172,7 +172,7 @@ button = buttons.ToggleButton({
 
 panel = panels.Panel({
   width: 380,
-  height: 250,
+  height: 300,
   contentURL: "./panelContent.html",
   onHide: () => button.state("window", {checked: false})
 });
@@ -194,6 +194,7 @@ panel.port.on("next-video", () => registeredYoutubeWorker.port.emit("next-video"
 panel.port.on("previous-video", () => registeredYoutubeWorker.port.emit("previous-video"));
 panel.port.on("set-player-volume", (volume) => registeredYoutubeWorker.port.emit("set-player-volume", volume));
 panel.port.on("toggle-mute", () => registeredYoutubeWorker.port.emit("toggle-mute"));
+panel.port.on("loop-video", (checked) => registeredYoutubeWorker.port.emit("loop-video", checked));
 
 panel.port.on("attach-to-tab", function(){
     attachedTabCandidate = HLtabs.activeTab;
