@@ -4,8 +4,11 @@
 #already bundled addons
 *.xpi
 
-screenshot.png
-screenshot.jpg
+screenshot*.png
+screenshot*.jpg
 
 *.jpmignore
 *.gitignore
+
+#git folder should not be in there
+.git/*
