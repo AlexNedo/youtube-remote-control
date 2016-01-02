@@ -10,5 +10,8 @@ screenshot*.jpg
 *.jpmignore
 *.gitignore
 
+#readme for git
+README.md
+
 #git folder should not be in there
 .git/*
