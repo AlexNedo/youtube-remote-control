@@ -13,24 +13,24 @@ Ctrl + Alt:
 Shift + alt opens menu bar of windows
 
 youtube addon hotkey mappings:
-
-    pause/play    K
-    vol+    up
-    vol-    down
-    mute    M
-    prev    left
-    next    right
-    loop    N
+                                new mapping, because Ctrl+Alt + arrows  and + numpad+-  is used for screen stuff in linux
+    pause/play   K              K
+    vol+         up             W
+    vol-         down           S
+    mute         M              M
+    prev        left            P
+    next         right          N
+    loop         N              H
     -5m     
     -1m     
     -30s    
-    -10s    J
-    +10s    L
-    +30s    
+    -10s         J              J
+    +10s         L              L
+    +30s
     +1m     
     +5m     
-    slower    plus
-    faster    minus
+    slower       plus           A
+    faster      minus           D
     
 
 todo

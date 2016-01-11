@@ -205,15 +205,15 @@ panel.port.on("loop-video", (checked) => registeredYoutubeWorker.port.emit("loop
 function registerHotkeys(){
     allHotkeys.pauseKey =  hotkeys.Hotkey({combo:"accel-alt-k", onPress:() => registeredYoutubeWorker.port.emit("play-pause-video") });
     allHotkeys.muteKey = hotkeys.Hotkey({combo:"accel-alt-m", onPress:() => registeredYoutubeWorker.port.emit("toggle-mute") });
-    allHotkeys.incRateKey = hotkeys.Hotkey({combo:"accel-alt-+", onPress:() => registeredYoutubeWorker.port.emit("increase-rate-video") });
-    allHotkeys.decRateKey = hotkeys.Hotkey({combo:"accel-alt--", onPress:() => registeredYoutubeWorker.port.emit("decrease-rate-video") });
+    allHotkeys.incRateKey = hotkeys.Hotkey({combo:"accel-alt-d", onPress:() => registeredYoutubeWorker.port.emit("increase-rate-video") });
+    allHotkeys.decRateKey = hotkeys.Hotkey({combo:"accel-alt-a", onPress:() => registeredYoutubeWorker.port.emit("decrease-rate-video") });
     allHotkeys.backwardKey = hotkeys.Hotkey({combo:"accel-alt-j", onPress:() => registeredYoutubeWorker.port.emit("jump", -10) });
     allHotkeys.forwardKey = hotkeys.Hotkey({combo:"accel-alt-l", onPress:() => registeredYoutubeWorker.port.emit("jump", 10) });
-    allHotkeys.loopKey = hotkeys.Hotkey({combo:"accel-alt-n", onPress:() => panel.port.emit("toggle-loop") });
-    allHotkeys.nextKey = hotkeys.Hotkey({combo:"accel-alt-right", onPress:() => registeredYoutubeWorker.port.emit("next-video") });
-    allHotkeys.prevKey = hotkeys.Hotkey({combo:"accel-alt-left", onPress:() => registeredYoutubeWorker.port.emit("previous-video") });
-    allHotkeys.volUpKey = hotkeys.Hotkey({combo:"accel-alt-up", onPress:() => registeredYoutubeWorker.port.emit("increase-player-volume") });
-    allHotkeys.volDownKey = hotkeys.Hotkey({combo:"accel-alt-down", onPress:() => registeredYoutubeWorker.port.emit("decrease-player-volume") });
+    allHotkeys.loopKey = hotkeys.Hotkey({combo:"accel-alt-h", onPress:() => panel.port.emit("toggle-loop") });
+    allHotkeys.nextKey = hotkeys.Hotkey({combo:"accel-alt-n", onPress:() => registeredYoutubeWorker.port.emit("next-video") });
+    allHotkeys.prevKey = hotkeys.Hotkey({combo:"accel-alt-p", onPress:() => registeredYoutubeWorker.port.emit("previous-video") });
+    allHotkeys.volUpKey = hotkeys.Hotkey({combo:"accel-alt-w", onPress:() => registeredYoutubeWorker.port.emit("increase-player-volume") });
+    allHotkeys.volDownKey = hotkeys.Hotkey({combo:"accel-alt-s", onPress:() => registeredYoutubeWorker.port.emit("decrease-player-volume") });
 }
 
 function unregisterHotkeys(){

@@ -102,14 +102,14 @@ input[type=range]::-moz-range-thumb {
             <span class="inner-container">
                 <button  class="control" disabled onclick="playPause()" title="Play/Pause [Ctrl+Alt+K]">&#9654;/&#10074;&#10074;</button>
                 <img id="mute" src="speaker_none.png" onclick="toggleMute()" title="Mute volume [Ctrl+Alt+M]" />
-                <input id="volume" type="range" title="Change volume [Ctrl+Alt+Arrow Key UP/Arrow Key DOWN]"/>
-                <button class="control" disabled onclick="prev()" title="Previous video [Ctrl+Alt+Arrow Key Left]">&#10074;&#x25c0;&#x25c0;&nbsp;</button>
-                <button class="control" disabled onclick="next()" title="Next video [Ctrl+Alt+Arrow Key Right]">&#9654;&#9654;&#10074;&nbsp</button>
+                <input id="volume" type="range" title="Change volume [Ctrl+Alt+W/S]"/>
+                <button class="control" disabled onclick="prev()" title="Previous video [Ctrl+Alt+P]">&#10074;&#x25c0;&#x25c0;&nbsp;</button>
+                <button class="control" disabled onclick="next()" title="Next video [Ctrl+Alt+N]">&#9654;&#9654;&#10074;&nbsp</button>
             </span>
         </div>
 
         <div class="outer-container">
-            <span class="inner-container" title="Loop Video [Ctrl+Alt+N]">
+            <span class="inner-container" title="Loop Video [Ctrl+Alt+H]">
                 <input type="checkbox" id="loop" /> loop
             </span>
         </div>
@@ -129,9 +129,9 @@ input[type=range]::-moz-range-thumb {
 
         <div class="outer-container">
             <span class="inner-container">
-                <button class="control" disabled onclick="slower()" title="Decrease playback rate [Ctrl+Alt+Numpad Plus]">&#x25c0;&#x25c0;&#x25c0;</button>
+                <button class="control" disabled onclick="slower()" title="Decrease playback rate [Ctrl+Alt+A]">&#x25c0;&#x25c0;&#x25c0;</button>
                 <span id="rate-viewer" title="Playback rate">1</span>
-                <button class="control" disabled onclick="faster()" title="Increase playback rate [Ctrl+Alt+Numpad Minus]">&#9654;&#9654;&#9654;</button>
+                <button class="control" disabled onclick="faster()" title="Increase playback rate [Ctrl+Alt+D]">&#9654;&#9654;&#9654;</button>
             </span>
         </div>
         <div class="tab-title-viewer">Currently attached Tab:<br><span id="current-attached">-</span></div><br>
