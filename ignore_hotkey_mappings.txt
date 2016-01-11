@@ -1,0 +1,44 @@
+Already used:
+Ctrl + Shift:
+   R, V, G, W, PgUp, PgDown, P, Tab, T, N, E, `, H, Entf, D, B, A, I, K, C, S, Q, M, J, Enter
+   
+   addblock uses: F, V
+   
+   Free: L, O, U, X, Y, Z
+   
+Ctrl + Alt:
+    P, G only in pdf
+    
+    
+Shift + alt opens menu bar of windows
+
+youtube addon hotkey mappings:
+
+    pause/play    K
+    vol+    up
+    vol-    down
+    mute    M
+    prev    left
+    next    right
+    loop    N
+    -5m     
+    -1m     
+    -30s    
+    -10s    J
+    +10s    L
+    +30s    
+    +1m     
+    +5m     
+    slower    plus
+    faster    minus
+    
+
+todo
+    add hotkeys   X
+    add hotkeys to tooltips in panel  X 
+    check if hotkey effect are visible correctly in panel   X
+    add hotkey to amo addon listing description
+    prepare new screenshots?
+    
+    check with developer edition and multiprocess tag in package.json
+    

@@ -100,16 +100,16 @@ input[type=range]::-moz-range-thumb {
         <button id="attach-button" onclick="attachToTab()">Attach to Current Tab</button>
         <div class="outer-container">
             <span class="inner-container">
-                <button  class="control" disabled onclick="playPause()" title="play/pause">&#9654;/&#10074;&#10074;</button>
-                <img id="mute" src="speaker_none.png" onclick="toggleMute()" />
-                <input id="volume" type="range"/>
-                <button class="control" disabled onclick="prev()" title="previous video">&#10074;&#x25c0;&#x25c0;&nbsp;</button>
-                <button class="control" disabled onclick="next()" title="next video">&#9654;&#9654;&#10074;&nbsp</button>
+                <button  class="control" disabled onclick="playPause()" title="Play/Pause [Ctrl+Alt+K]">&#9654;/&#10074;&#10074;</button>
+                <img id="mute" src="speaker_none.png" onclick="toggleMute()" title="Mute volume [Ctrl+Alt+M]" />
+                <input id="volume" type="range" title="Change volume [Ctrl+Alt+Arrow Key UP/Arrow Key DOWN]"/>
+                <button class="control" disabled onclick="prev()" title="Previous video [Ctrl+Alt+Arrow Key Left]">&#10074;&#x25c0;&#x25c0;&nbsp;</button>
+                <button class="control" disabled onclick="next()" title="Next video [Ctrl+Alt+Arrow Key Right]">&#9654;&#9654;&#10074;&nbsp</button>
             </span>
         </div>
 
         <div class="outer-container">
-            <span class="inner-container">
+            <span class="inner-container" title="Loop Video [Ctrl+Alt+N]">
                 <input type="checkbox" id="loop" /> loop
             </span>
         </div>
@@ -119,8 +119,8 @@ input[type=range]::-moz-range-thumb {
                 <button class="control time-button" disabled onclick="jump(-300)">-5m</button>
                 <button class="control time-button" disabled onclick="jump(-60)">-1m</button>
                 <button class="control time-button" disabled onclick="jump(-30)">-30s</button>
-                <button class="control time-button" disabled onclick="jump(-10)">-10s</button>
-                <button class="control time-button" disabled onclick="jump(10)">+10s</button>
+                <button class="control time-button" disabled onclick="jump(-10)" title="Jump 10s backwards [Ctrl+Alt+J]">-10s</button>
+                <button class="control time-button" disabled onclick="jump(10)" title="Jump 10s forward [Ctrl+Alt+L]">+10s</button>
                 <button class="control time-button" disabled onclick="jump(30)">+30s</button>
                 <button class="control time-button" disabled onclick="jump(60)">+1m</button>
                 <button class="control time-button" disabled onclick="jump(300)">+5m</button>
@@ -129,9 +129,9 @@ input[type=range]::-moz-range-thumb {
 
         <div class="outer-container">
             <span class="inner-container">
-                <button class="control" disabled onclick="slower()" title="decrease playback rate">&#x25c0;&#x25c0;&#x25c0;</button>
-                <span id="rate-viewer" title="playback rate">1</span>
-                <button class="control" disabled onclick="faster()" title="increase playback rate">&#9654;&#9654;&#9654;</button>
+                <button class="control" disabled onclick="slower()" title="Decrease playback rate [Ctrl+Alt+Numpad Plus]">&#x25c0;&#x25c0;&#x25c0;</button>
+                <span id="rate-viewer" title="Playback rate">1</span>
+                <button class="control" disabled onclick="faster()" title="Increase playback rate [Ctrl+Alt+Numpad Minus]">&#9654;&#9654;&#9654;</button>
             </span>
         </div>
         <div class="tab-title-viewer">Currently attached Tab:<br><span id="current-attached">-</span></div><br>

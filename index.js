@@ -26,6 +26,8 @@ var button;
 //the panel with the controls
 var panel;
 
+var allHotkeys = {};
+
 //For handling the first situation where this handler gets called twice on youtube domains
 //If one wants to reset the first situation handler set firstFlag=true and oldUrl=undefined
 var firstFlag = true;
@@ -177,6 +179,10 @@ panel = panels.Panel({
   onHide: () => button.state("window", {checked: false})
 });
 
+//hotfix for displaying tooltips in the panel
+require('sdk/view/core').getActiveView(panel)
+    .setAttribute('tooltip', 'aHTMLTooltip');
+
 function handleChange(state){
     if (state.checked){
         panel.show({position: button});
@@ -195,6 +201,34 @@ panel.port.on("previous-video", () => registeredYoutubeWorker.port.emit("previou
 panel.port.on("set-player-volume", (volume) => registeredYoutubeWorker.port.emit("set-player-volume", volume));
 panel.port.on("toggle-mute", () => registeredYoutubeWorker.port.emit("toggle-mute"));
 panel.port.on("loop-video", (checked) => registeredYoutubeWorker.port.emit("loop-video", checked));
+
+function registerHotkeys(){
+    allHotkeys.pauseKey =  hotkeys.Hotkey({combo:"accel-alt-k", onPress:() => registeredYoutubeWorker.port.emit("play-pause-video") });
+    allHotkeys.muteKey = hotkeys.Hotkey({combo:"accel-alt-m", onPress:() => registeredYoutubeWorker.port.emit("toggle-mute") });
+    allHotkeys.incRateKey = hotkeys.Hotkey({combo:"accel-alt-+", onPress:() => registeredYoutubeWorker.port.emit("increase-rate-video") });
+    allHotkeys.decRateKey = hotkeys.Hotkey({combo:"accel-alt--", onPress:() => registeredYoutubeWorker.port.emit("decrease-rate-video") });
+    allHotkeys.backwardKey = hotkeys.Hotkey({combo:"accel-alt-j", onPress:() => registeredYoutubeWorker.port.emit("jump", -10) });
+    allHotkeys.forwardKey = hotkeys.Hotkey({combo:"accel-alt-l", onPress:() => registeredYoutubeWorker.port.emit("jump", 10) });
+    allHotkeys.loopKey = hotkeys.Hotkey({combo:"accel-alt-n", onPress:() => panel.port.emit("toggle-loop") });
+    allHotkeys.nextKey = hotkeys.Hotkey({combo:"accel-alt-right", onPress:() => registeredYoutubeWorker.port.emit("next-video") });
+    allHotkeys.prevKey = hotkeys.Hotkey({combo:"accel-alt-left", onPress:() => registeredYoutubeWorker.port.emit("previous-video") });
+    allHotkeys.volUpKey = hotkeys.Hotkey({combo:"accel-alt-up", onPress:() => registeredYoutubeWorker.port.emit("increase-player-volume") });
+    allHotkeys.volDownKey = hotkeys.Hotkey({combo:"accel-alt-down", onPress:() => registeredYoutubeWorker.port.emit("decrease-player-volume") });
+}
+
+function unregisterHotkeys(){
+    allHotkeys.pauseKey.destroy();
+    allHotkeys.muteKey.destroy();
+    allHotkeys.incRateKey.destroy();
+    allHotkeys.decRateKey.destroy();
+    allHotkeys.backwardKey.destroy();
+    allHotkeys.forwardKey.destroy();
+    allHotkeys.loopKey.destroy();
+    allHotkeys.nextKey.destroy();
+    allHotkeys.prevKey.destroy();
+    allHotkeys.volUpKey.destroy();
+    allHotkeys.volDownKey.destroy();
+}
 
 panel.port.on("attach-to-tab", function(){
     attachedTabCandidate = HLtabs.activeTab;
@@ -225,6 +259,8 @@ function contentScriptWorkerDetached(){
     currentlyAttachedTab = null;
     attachedBrowser = null;
     
+    unregisterHotkeys();
+
     //panel.port.emit throws an error at browser shutdown, because panel seems
     //to be already destroyed at this point
     panel.port.emit("tab-detached");
@@ -255,37 +291,5 @@ function attachSuccess(){
     
     currentState = States.ATTACHED_CONTROLS_ENABLED;
     
+    registerHotkeys();
 };
-
-/* 
-
-hotkeys.Hotkey({
-    combo:"accel-shift-y",
-    onPress:increasePlayBackRate
-});
-
-hotkeys.Hotkey({
-    combo:"accel-shift-x",
-    onPress:decreasePlayBackRate
-});
-
-hotkeys.Hotkey({
-    combo:"accel-alt-p",
-    onPress:(a) => contentScriptWorkers.forEach( worker => worker.port.emit("pause-video"))
-}); */
-
-
-/* pageMod.PageMod({
-    include: "*.youtube.com",
-    contentScriptFile: "./youtube_content.js",
-    onAttach: function(worker){
-            console.info("Adding new worker " + contentScriptWorkers); 
-            //remove old workers which may be used with current active tab
-            contentScriptWorkers = contentScriptWorkers.filter((elem,i,arr) => elem.tab!==worker.tab);
-            contentScriptWorkers.push(worker);
-            //on detach event: remove worker from contenScriptWorkers (splice is used to remove from arrays)
-            worker.on("detach", () => (contentScriptWorkers.indexOf(worker) > -1) && contentScriptWorkers.splice(contentScriptWorkers.indexOf(worker),1))
-            console.info("workers after adding " + contentScriptWorkers); 
-            
-            }
-});  */

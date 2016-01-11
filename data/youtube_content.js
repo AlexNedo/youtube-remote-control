@@ -73,6 +73,14 @@ var playerObject = window.content.document.getElementById("movie_player");
     self.port.on("set-player-volume", function(volume){
         player.setVolume(volume);
     });
+
+    self.port.on("increase-player-volume", function(){
+        player.setVolume(player.getVolume() + 10);
+    });
+
+    self.port.on("decrease-player-volume", function(){
+        player.setVolume(player.getVolume() - 10);
+    });
     
     self.port.on("toggle-mute", function(){
         if (player.isMuted()){

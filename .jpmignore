@@ -4,6 +4,8 @@
 #already bundled addons
 *.xpi
 
+ignore_*.*
+
 screenshot*.png
 screenshot*.jpg
 

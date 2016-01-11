@@ -97,6 +97,8 @@ addon.port.on("activate-controls", changeControlsState);
 addon.port.on("show-message", (message) => errorMessage.textContent = message);    
 addon.port.on("refresh-tab-title", setCurrentAttachedText);
 
+addon.port.on("toggle-loop", () => loopCheckbox.click() );
+
 addon.port.on("tab-attached", function() {
     changeControlsState(true);
     attachButton.textContent = "Detach current tab";
