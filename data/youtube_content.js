@@ -1,7 +1,7 @@
 ﻿//the main object which controls the player
 var playerObject = window.content.document.getElementById("movie_player");
 // var playerContainer = window.content.document.getElementById("player")
-//a way to check if the player is visible playerContainer.className?classList.contains("off-screen")
+//a way to check if the player is visible playerContainer.className?classList.includes("off-screen")
 (function(){
     if (!playerObject){
         console.error("NO LEGIT YOUTUBE SITE");

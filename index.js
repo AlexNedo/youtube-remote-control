@@ -127,7 +127,7 @@ var tabsProgressListener = {
 
 //Test whether this is an url with a legit player (currently quite simple)
 function siteHasVideo(url){
-    return url.contains("watch?v=");
+    return url.includes("watch?v=");
 }
 
 //Event handler for tab switches. Attach button is enabled or disabled accordingly.
@@ -232,7 +232,7 @@ function unregisterHotkeys(){
 
 panel.port.on("attach-to-tab", function(){
     attachedTabCandidate = HLtabs.activeTab;
-    if (!attachedTabCandidate.url.contains("youtube.com")){
+    if (!attachedTabCandidate.url.includes("youtube.com")){
         panel.port.emit("show-message", "No legit youtube player found.");
         return;
     }
